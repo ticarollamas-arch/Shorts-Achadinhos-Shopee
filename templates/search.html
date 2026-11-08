@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% set heading="Pesquisa de referências" %}{% block content %}
+<div class="back"><a href="{{ url_for('project',project_id=p.id) }}">← Voltar ao projeto</a></div><section class="panel"><span class="eyebrow">YOUTUBE</span><h2>Vídeos relacionados a {{ p.title }}</h2><form method="get"><label>Termo de pesquisa<input name="q" value="{{ q }}"></label><button class="primary">Pesquisar</button></form><p class="hint">Os resultados são referências para pesquisa. O aplicativo não baixa nem reutiliza automaticamente vídeos de terceiros.</p></section>
+{% if error %}<div class="flash error">{{ error }}</div>{% endif %}{% if results %}<div class="results">{% for r in results %}<article class="result"><img src="{{ r.thumb }}" alt=""><div><b>{{ r.title }}</b><small>{{ r.channel }}</small><a href="{{ r.url }}" target="_blank" rel="noopener">Abrir no YouTube ↗</a></div></article>{% endfor %}</div>{% endif %}
+{% endblock %}
